@@ -23,6 +23,18 @@ pipe = pickle.load(open(pipe_path, 'rb'))
 df = pickle.load(open(df_path, 'rb'))
 
 st.title("Laptop_price_prediction")
+page_bg_img = """
+<style>
+.stApp {
+  background-image: url(https://storage.googleapis.com/kaggle-datasets-images/4087248/7092422/7872fba88ed7bfb4927176379440227d/dataset-card.jpg?t=2023-11-30-16-27-16");
+  background-size: cover;
+}
+</style>
+"""
+
+import streamlit as st
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
 
 #Brand
 company = st.selectbox('Brand',df['Company'].unique())
@@ -88,5 +100,6 @@ if st.button('Predict Price'):
 
 
     st.title("The predicted price of this configuration is " + str(int(np.exp(pipe.predict(query)[0]))))
+
 
 
