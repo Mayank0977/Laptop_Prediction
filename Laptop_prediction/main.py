@@ -33,6 +33,8 @@ page_bg_img = """
 .stApp {
   background-image: url("laptop.jpg");
   background-size: cover;
+   background-position: center;
+    background-repeat: no-repeat;
 }
 </style>
 """
@@ -104,6 +106,7 @@ if st.button('Predict Price'):
 
 
     st.title("The predicted price of this configuration is " + str(int(np.exp(pipe.predict(query)[0]))))
+
 
 
 
