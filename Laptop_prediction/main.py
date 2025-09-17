@@ -43,7 +43,7 @@ Type = st.selectbox('Type',df['TypeName'].unique())
 #Ram
 ram = st.selectbox('Ram(in Gb)',[8,16,32,64,128,256,512])
 #weight
-weight=st.number_input('weight of the laptop')
+weight=st.number_input('weight of the laptop',min_value=1)
 
 #TouchScreen
 touchscreen = st.selectbox("Touchscreen",['Yes','No'])
@@ -100,6 +100,7 @@ if st.button('Predict Price'):
 
 
     st.title("The predicted price of this configuration is " + str(int(np.exp(pipe.predict(query)[0]))))
+
 
 
 
