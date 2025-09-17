@@ -36,6 +36,12 @@ page_bg_img = """
    background-position: center;
     background-repeat: no-repeat;
 }
+[data-testid="stHeader"] {
+    background: rgba(0,0,0,0);
+}
+[data-testid="stSidebar"] {
+    background-color: rgba(255, 255, 255, 0.5);
+}
 </style>
 """
 
@@ -106,6 +112,7 @@ if st.button('Predict Price'):
 
 
     st.title("The predicted price of this configuration is " + str(int(np.exp(pipe.predict(query)[0]))))
+
 
 
 
