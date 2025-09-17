@@ -29,25 +29,28 @@ image_path = os.path.join(BASE_DIR, "laptop.jpg")
 # Show image
 st.image(image_path, use_column_width=True)
 page_bg_img = """
-<style>
-[data-testid="stApp"] {
-  background-image: url("laptop.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
 
-[data-testid="stHeader"] {
-  background: rgba(0,0,0,0);
-}
+import base64
 
-[data-testid="stSidebar"] {
-  background-color: rgba(255, 255, 255, 0.5);
-}
-</style>
-"""
-st.markdown(page_bg_img, unsafe_allow_html=True)
+# Function to set background image
+def set_background(image_file):
+    with open(image_file, "rb") as img:
+        encoded = base64.b64encode(img.read()).decode()
+    background = f"""
+    <style>
+    [data-testid="stApp"] {{
+        background-image: url("data:image/jpg;base64,{encoded}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }}
+    </style>
+    """
+    st.markdown(background, unsafe_allow_html=True)
+
+# Call the function with your image file
+set_background("laptop.jpg")
 
 
 #Brand
@@ -114,6 +117,7 @@ if st.button('Predict Price'):
 
 
     st.title("The predicted price of this configuration is " + str(int(np.exp(pipe.predict(query)[0]))))
+
 
 
 
