@@ -46,7 +46,7 @@ def set_background(image_file):
     background-attachment: fixed;
 }}
 </style>
-"""
+
     st.markdown(background, unsafe_allow_html=True)
 
 # Call the function with your image file
@@ -121,6 +121,7 @@ if st.button('Predict Price'):
 
 
     st.title("The predicted price of this configuration is " + str(int(np.exp(pipe.predict(query)[0]))))
+
 
 
 
