@@ -41,7 +41,7 @@ def set_background(image_file):
         encoded = base64.b64encode(img.read()).decode()
 
     background = f"""
-    <style>
+<style>
     [data-testid="stApp"] {{
         background-image: url("data:image/jpg;base64,{encoded}");
         background-size: cover;
@@ -49,7 +49,7 @@ def set_background(image_file):
         background-repeat: no-repeat;
         background-attachment: fixed;
     }}
-    </style>
+</style>
     """
 
     st.markdown(background, unsafe_allow_html=True)
@@ -127,6 +127,7 @@ if st.button('Predict Price'):
 
 
     st.title("The predicted price of this configuration is " + str(int(np.exp(pipe.predict(query)[0]))))
+
 
 
 
