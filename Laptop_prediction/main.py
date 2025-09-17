@@ -16,8 +16,8 @@ import os
 # Correct path handling
 BASE_DIR = os.path.dirname(__file__)
 
-pipe_path = os.path.join(BASE_DIR, "Laptop_prediction", "pipe.pkl")
-df_path = os.path.join(BASE_DIR, "Laptop_prediction", "df.pkl")
+pipe_path = os.path.join(BASE_DIR, "pipe.pkl")
+df_path = os.path.join(BASE_DIR, "df.pkl")
 
 pipe = pickle.load(open(pipe_path, 'rb'))
 df = pickle.load(open(df_path, 'rb'))
@@ -88,4 +88,5 @@ if st.button('Predict Price'):
 
 
     st.title("The predicted price of this configuration is " + str(int(np.exp(pipe.predict(query)[0]))))
+
 
