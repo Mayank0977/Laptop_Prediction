@@ -23,6 +23,11 @@ pipe = pickle.load(open(pipe_path, 'rb'))
 df = pickle.load(open(df_path, 'rb'))
 
 st.title("Laptop_price_prediction")
+# Image path
+image_path = os.path.join(BASE_DIR, "laptop.jpg")
+
+# Show image
+st.image(image_path, use_column_width=True)
 page_bg_img = """
 <style>
 .stApp {
@@ -32,7 +37,6 @@ page_bg_img = """
 </style>
 """
 
-import streamlit as st
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
 
@@ -100,6 +104,7 @@ if st.button('Predict Price'):
 
 
     st.title("The predicted price of this configuration is " + str(int(np.exp(pipe.predict(query)[0]))))
+
 
 
 
