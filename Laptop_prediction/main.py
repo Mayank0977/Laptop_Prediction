@@ -30,7 +30,6 @@ image_path = os.path.join(BASE_DIR, "laptop.jpg")
 st.image(image_path, use_column_width=True)
 page_bg_img = """
 
-import base64
 
 import streamlit as st
 import base64
@@ -42,22 +41,16 @@ def set_background(image_file):
 
     background = f"""
 <style>
-    [data-testid="stApp"] {{
-        background-image: url("data:image/jpg;base64,{encoded}");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-    }}
+[data-testid="stApp"] {{
+    background-image: url("data:image/jpg;base64,{encoded}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}}
 </style>
-    """
-
+"""
     st.markdown(background, unsafe_allow_html=True)
-
-# Call the function with your image file
-set_background("laptop.jpg")
-
-
 
 # Call the function with your image file
 set_background("laptop.jpg")
@@ -127,6 +120,7 @@ if st.button('Predict Price'):
 
 
     st.title("The predicted price of this configuration is " + str(int(np.exp(pipe.predict(query)[0]))))
+
 
 
 
