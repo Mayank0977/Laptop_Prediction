@@ -1,11 +1,26 @@
+#import streamlit as st
+#import pickle
+#import numpy as np
+#import pandas as pd
+
+# import the model
+#pipe = pickle.load(open("pipe.pkl",'rb'))
+#df = pickle.load(open("df.pkl",'rb'))
+
 import streamlit as st
 import pickle
 import numpy as np
 import pandas as pd
+import os
 
-# import the model
-pipe = pickle.load(open("pipe.pkl",'rb'))
-df = pickle.load(open("df.pkl",'rb'))
+# Correct path handling
+BASE_DIR = os.path.dirname(__file__)
+
+pipe_path = os.path.join(BASE_DIR, "Laptop_prediction", "pipe.pkl")
+df_path = os.path.join(BASE_DIR, "Laptop_prediction", "df.pkl")
+
+pipe = pickle.load(open(pipe_path, 'rb'))
+df = pickle.load(open(df_path, 'rb'))
 
 st.title("Laptop_price_prediction")
 
@@ -73,3 +88,4 @@ if st.button('Predict Price'):
 
 
     st.title("The predicted price of this configuration is " + str(int(np.exp(pipe.predict(query)[0]))))
+
