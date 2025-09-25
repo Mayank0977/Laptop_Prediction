@@ -14,7 +14,10 @@ df_path = os.path.join(BASE_DIR, "df.pkl")
 pipe = pickle.load(open(pipe_path, 'rb'))
 df = pickle.load(open(df_path, 'rb'))
 
-st.title("Laptop Price Prediction")
+st.markdown(
+    "<h1 style='text-align: center; color: #FF5733;'>💻 Laptop Price Prediction</h1>",
+    unsafe_allow_html=True
+)
 
 # Function to set background image
 def set_background(image_file):
@@ -95,4 +98,5 @@ if st.button('Predict Price'):
 
     st.title("The predicted price of this configuration is ₹" +
              str(int(np.exp(pipe.predict(query)[0]))))
+
 
