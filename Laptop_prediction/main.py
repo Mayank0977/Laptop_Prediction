@@ -35,7 +35,7 @@ def set_background(image_file):
     st.markdown(background, unsafe_allow_html=True)
 
 # Call the function
-set_background(os.path.join(BASE_DIR, "laptop.jpg"))
+set_background(os.path.join(BASE_DIR, "laptopp.jpg"))
 
 # Brand
 company = st.selectbox('Brand', df['Company'].unique())
@@ -95,3 +95,4 @@ if st.button('Predict Price'):
 
     st.title("The predicted price of this configuration is ₹" +
              str(int(np.exp(pipe.predict(query)[0]))))
+
